@@ -1288,8 +1288,10 @@ void SuperPatchmatch::RunDaisyFilterFlow( cv::Mat_<cv::Vec2f> &flowResult)
 			kx = repPixelsLeft[iy][0][1];
 
 #if USE_ZERO_FLOW_INITIALIZATION
-			if (VerifyFlowInVisitedListLeft(iy, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2)))
-				ImproveDaisyFlowLabelListLeft(ky, kx, vector<cv::Vec4f>(1, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2)));
+			if (VerifyFlowInVisitedListLeft(iy, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2))) {
+			  auto v = vector<cv::Vec4f>(1, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2));
+			  ImproveDaisyFlowLabelListLeft(ky, kx, v);
+			}
 #else
 			float tmpHorPos = floor((float(rand())/(RAND_MAX+1))*horRangeLeft)+minHorPosLeft;
 			float tmpVerPos = floor((float(rand())/(RAND_MAX+1))*verRangeLeft)+minVerPosLeft;
@@ -1314,8 +1316,10 @@ void SuperPatchmatch::RunDaisyFilterFlow( cv::Mat_<cv::Vec2f> &flowResult)
 			ky = repPixelsRight[iy][0][0];
 			kx = repPixelsRight[iy][0][1];
 #if USE_ZERO_FLOW_INITIALIZATION
-			if (VerifyFlowInVisitedListRight(iy, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2)))
-				ImproveDaisyFlowLabelListRight(ky, kx, vector<cv::Vec4f>(1, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2)));
+			if (VerifyFlowInVisitedListRight(iy, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2))) {
+                          auto v = vector<cv::Vec4f>(1, cv::Vec4f(0, 0, 0, (MAX_ORIENTATION_LEVEL-1)/2));
+                          ImproveDaisyFlowLabelListRight(ky, kx, v);
+			}
 #else
 
 			float tmpHorPos = floor((float(rand())/(RAND_MAX+1))*horRangeRight)+minHorPosRight;

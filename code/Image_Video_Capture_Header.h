@@ -1,7 +1,7 @@
 #ifndef __IMAGE_VIDEO_CAPTURE_HEADER
 #define __IMAGE_VIDEO_CAPTURE_HEADER
 
-#include "opencv2\opencv.hpp"
+#include "opencv2/opencv.hpp"
 
 #include <string>
 

@@ -749,15 +749,15 @@ namespace kutility
    template<typename T> inline
    void map_memory_file(string memory_file, long int size, T* &mapped_file)
    {
-      int fildes = open64(memory_file.c_str(), O_RDWR);
+      int fildes = open(memory_file.c_str(), O_RDWR);
 
       if(fildes == -1) //The file does not exist
       {
          create_file<T>(memory_file,size);
-         fildes = open64(memory_file.c_str(), O_RDWR);
+         fildes = open(memory_file.c_str(), O_RDWR);
       }
 
-      void* file = mmap64(0, size*sizeof(T), PROT_READ|PROT_WRITE, MAP_SHARED, fildes, 0);
+      void* file = mmap(0, size*sizeof(T), PROT_READ|PROT_WRITE, MAP_SHARED, fildes, 0);
 
       if(file == MAP_FAILED)
       {

@@ -1065,14 +1065,14 @@ float daisy::GetAndCalculateTheDistanceWithShiftedNormalizedHistogram( float *hi
 		m1 = _mm_add_ps(_mm_mul_ps(m2, m2), _mm_mul_ps(m3, m3));
 		m1 = _mm_hadd_ps(m1, m1);
 		m1 = _mm_hadd_ps(m1, m1);
-		return m1.m128_f32[0];
+		return m1[0];
 #endif
 #if USE_L1_ERROR_DISTANCE
 		__m128 m1;
 		m1 = _mm_add_ps(_mm_load_ps(hist1), _mm_load_ps(hist1+4));
 		m1 = _mm_hadd_ps(m1, m1);
 		m1 = _mm_hadd_ps(m1, m1);
-		return m1.m128_f32[0];
+		return m1[0];
 #endif
 	}
 	else
@@ -1093,7 +1093,7 @@ float daisy::GetAndCalculateTheDistanceWithShiftedNormalizedHistogram( float *hi
 
 		m3 = _mm_hadd_ps(m3, m3);
 		m3 = _mm_hadd_ps(m3, m3);
-		return m3.m128_f32[0];
+		return m3[0];
 #endif
 #if USE_L1_ERROR_DISTANCE
 		__m128 m1, m2, m3;
@@ -1104,7 +1104,7 @@ float daisy::GetAndCalculateTheDistanceWithShiftedNormalizedHistogram( float *hi
 		m3 = _mm_add_ps(_mm_sqrt_ps(m1), _mm_sqrt_ps(m2));
 		m3 = _mm_hadd_ps(m3, m3);
 		m3 = _mm_hadd_ps(m3, m3);
-		return m3.m128_f32[0];
+		return m3[0];
 #endif
 	}
 }

@@ -1,7 +1,7 @@
 #ifndef __SUPERPIXELS_HEADER
 #define __SUPERPIXELS_HEADER
 
-#include "opencv2\opencv.hpp"
+#include "opencv2/opencv.hpp"
 
 void DrawContoursAroundSegments(const cv::Mat_<cv::Vec3b> &imgIn, cv::Mat_<int>	&labels, cv::Mat_<cv::Vec3b> &imgOut);
 

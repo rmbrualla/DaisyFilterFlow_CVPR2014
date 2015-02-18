@@ -31,14 +31,14 @@ int CalcForwardFlowUsingDaisyFilterFlowMethod(const cv::Mat &img1, const cv::Mat
 
 int main() {
 	string f1, f2;
-	// WinAPI to call GUi to load two images
-	ScanFile::GUI_GetFileName(f1);
-	ScanFile::GUI_GetFileName(f2);
+	//	// WinAPI to call GUi to load two images
+	//ScanFile::GUI_GetFileName(f1);
+	//ScanFile::GUI_GetFileName(f2);
 
 	// read in two images
 	cv::Mat i1, i2;
-	i1 = cv::imread(f1);
-	i2 = cv::imread(f2);
+	i1 = cv::imread("warped_0101.png");
+	i2 = cv::imread("warped_0108.png");
 
 	// calculated forward flow, stored in conventional 
 	cv::Mat flow;

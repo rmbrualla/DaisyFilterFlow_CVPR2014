@@ -2,17 +2,19 @@ cmake_minimum_required(VERSION 2.7)
 project(Daisy_Filter_Flow)
 
 # set the proper path of header and library files of OpenCV
-set(OPENCV_INCLUDE $ENV{OPENCV_X64_INCLUDE})
-set(OPENCV_LIB_PATH $ENV{OPENCV_X64_LIB})
+#set(OPENCV_INCLUDE $ENV{OPENCV_X64_INCLUDE})
+#set(OPENCV_LIB_PATH $ENV{OPENCV_X64_LIB})
+
+find_package( OpenCV REQUIRED )
+
 
 include_directories(
-	${OPENCV_INCLUDE}
-	./code/daisy_descriptor/include
+	code/daisy_descriptor/include
 )
 
-link_directories(
-	${OPENCV_LIB_PATH}
-)
+#link_directories(
+#	${OPENCV_LIB_PATH}
+#)
 
 file(GLOB DAISY_DESCRIPTOR 
 code/daisy_descriptor/src/*)
@@ -55,12 +57,8 @@ add_executable(Daisy_Filter_Flow
 	${DAISY_FLOW_FILE}
 )
 
-target_link_libraries(Daisy_Filter_Flow 
-	debug opencv_highgui248d.lib optimized opencv_highgui248.lib
-	debug opencv_core248d.lib	optimized opencv_core248.lib
-	debug opencv_imgproc248d.lib optimized opencv_imgproc248.lib
-#	debug opencv_features2d248d.lib optimized opencv_features2d248.lib
-#	debug opencv_nonfree248d.lib optimized opencv_nonfree248.lib
+target_link_libraries(Daisy_Filter_Flow
+${OpenCV_LIBS}
 )
 
 source_group("Daisy_Descriptor" FILES ${DAISY_DESCRIPTOR})
